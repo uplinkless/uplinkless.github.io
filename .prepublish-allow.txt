@@ -1,0 +1,8 @@
+# Values published on purpose. Format: kind | value | reason
+# kind is ip, secret or pii. pii lines also need: | evidence=<file or post> | reported=<agency> <YYYY-MM-DD>
+# Network base addresses that appear in scripts/prepublish_check.py as rule definitions:
+ip | 10.0.0.0 | network base address in scripts/prepublish_check.py
+ip | 172.16.0.0 | network base address in scripts/prepublish_check.py
+ip | 192.168.0.0 | network base address in scripts/prepublish_check.py
+ip | 100.64.0.0 | network base address in scripts/prepublish_check.py
+ip | 169.254.0.0 | network base address in scripts/prepublish_check.py

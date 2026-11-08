@@ -1,0 +1,60 @@
+baseURL: "https://uplinkless.github.io/"
+locale: "ko-KR"
+defaultContentLanguage: "ko"
+title: "uplinkless Malware Analysis"
+theme: "PaperMod"
+enableRobotsTXT: true
+
+pagination:
+  pagerSize: 5
+
+taxonomies:
+  tag: "tags"
+  family: "families"
+  technique: "attack"
+  tool: "tools"
+  group: "groups"
+
+outputs:
+  home: ["HTML", "RSS", "JSON"]
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: false
+
+params:
+  env: "production"
+  author: "uplinkless"
+  description: "Malware analysis, detection rules and evidence-based attribution notes."
+  defaultTheme: "auto"
+  DateFormat: "2006-01-02"
+  ShowReadingTime: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowToc: true
+  TocOpen: false
+  ShowShareButtons: false
+  ShowRssButtonInSectionTermList: true
+  mainSections: ["analyses", "techniques"]
+  homeInfoParams:
+    Title: "uplinkless Malware Analysis"
+    Content: >-
+      신규 악성코드 분석, 탐지 룰, 근거 기반 공격 그룹 유사도 평가와 전망 기록.
+      New malware analysis, detection rules, evidence-based attribution and forecasts.
+  socialIcons:
+    - name: "github"
+      url: "https://github.com/uplinkless"
+
+menu:
+  main:
+    - { identifier: "analyses", name: "Analyses", url: "/analyses/", weight: 10 }
+    - { identifier: "techniques", name: "Techniques", url: "/techniques/", weight: 20 }
+    - { identifier: "archives", name: "Archive", url: "/archives/", weight: 30 }
+    - { identifier: "groups", name: "Groups", url: "/groups/", weight: 40 }
+    - { identifier: "forecasts", name: "Forecasts", url: "/forecasts/", weight: 50 }
+    - { identifier: "tags", name: "Tags", url: "/tags/", weight: 60 }
+    - { identifier: "methodology", name: "Methodology", url: "/methodology/", weight: 70 }
+    - { identifier: "about", name: "About", url: "/about/", weight: 80 }
+    - { identifier: "search", name: "Search", url: "/search/", weight: 90 }

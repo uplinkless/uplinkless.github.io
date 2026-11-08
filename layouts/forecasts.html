@@ -1,0 +1,53 @@
+{{- define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}
+  <div class="post-description">{{ . }}</div>
+  {{- end }}
+</header>
+<div class="post-content">
+  {{ .Content }}
+  {{- $items := hugo.Data.forecasts.items | default slice }}
+  {{- $open := where $items "status" "open" }}
+  {{- $resolved := where $items "status" "in" (slice "resolved_true" "resolved_false") }}
+  <h2 id="open">열린 전망 ({{ len $open }})</h2>
+  {{- if $open }}
+  <table>
+    <thead><tr><th>ID</th><th>작성</th><th>기한</th><th>전망</th><th>확률</th><th>글</th></tr></thead>
+    <tbody>
+    {{- range sort $open "deadline" }}
+      <tr>
+        <td>{{ .id }}</td><td>{{ .created }}</td><td>{{ .deadline }}</td>
+        <td>{{ .statement }}</td><td>{{ .probability }}%</td>
+        <td>{{ with .post }}<a href="{{ . | relURL }}">글</a>{{ end }}</td>
+      </tr>
+    {{- end }}
+    </tbody>
+  </table>
+  {{- else }}
+  <p>아직 없음.</p>
+  {{- end }}
+  <h2 id="resolved">판정된 전망 ({{ len $resolved }})</h2>
+  {{- if $resolved }}
+  {{- $sum := 0.0 }}
+  <table>
+    <thead><tr><th>ID</th><th>기한</th><th>전망</th><th>확률</th><th>결과</th><th>판정 근거</th></tr></thead>
+    <tbody>
+    {{- range sort $resolved "deadline" }}
+      {{- $p := div (float .probability) 100 }}
+      {{- $outcome := cond (eq .status "resolved_true") 1.0 0.0 }}
+      {{- $gap := sub $p $outcome }}
+      {{- $sum = add $sum (mul $gap $gap) }}
+      <tr>
+        <td>{{ .id }}</td><td>{{ .deadline }}</td><td>{{ .statement }}</td><td>{{ .probability }}%</td>
+        <td>{{ cond (eq .status "resolved_true") "맞음" "틀림" }}</td><td>{{ .resolution }}</td>
+      </tr>
+    {{- end }}
+    </tbody>
+  </table>
+  <p>브라이어 점수: {{ lang.FormatNumber 3 (div $sum (len $resolved)) }} (판정 {{ len $resolved }}건. 0에 가까울수록 정확하고, 모든 전망을 50%로 냈다면 0.25)</p>
+  {{- else }}
+  <p>아직 없음.</p>
+  {{- end }}
+</div>
+{{- end }}

@@ -1,0 +1,10 @@
+#!/bin/sh
+# Pre-publish check on the staged version of staged files.
+# The private deny-list lives outside the repository: ../private/prepublish_denylist.txt
+repo_root=$(git rev-parse --show-toplevel) || exit 2
+denylist="$repo_root/../private/prepublish_denylist.txt"
+if command -v py >/dev/null 2>&1; then
+  py -3 "$repo_root/scripts/prepublish_check.py" --staged --denylist "$denylist" --require-denylist
+else
+  python3 "$repo_root/scripts/prepublish_check.py" --staged --denylist "$denylist" --require-denylist
+fi

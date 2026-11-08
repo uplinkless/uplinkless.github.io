@@ -1,0 +1,14 @@
+public/
+resources/_gen/
+.hugo_build.lock
+.env
+.env.*
+*.exe
+*.dll
+*.sys
+*.bin
+*.zip
+*.7z
+*.rar
+*.pcap
+*.pcapng
