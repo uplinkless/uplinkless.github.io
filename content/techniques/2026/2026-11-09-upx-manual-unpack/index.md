@@ -1,7 +1,7 @@
 ---
 title: "x64 UPX 수동 언패킹: 테일 점프에서 OEP까지"
 date: 2026-11-09
-draft: true
+draft: false
 attack: ["T1027.002"]
 tools: ["UPX 5.3.0", "x64dbg", "Python 3.13", "pefile 2024.8.26", "YARA 4.6.0"]
 tags: ["upx", "unpacking", "x64", "pe"]
