@@ -1,0 +1,7 @@
+# YARA rule upx_packed_pe, YARA 4.6.0, run inside the isolated VM
+## lab files
+upx_packed_pe hello_upx_packed.exe
+upx_packed_pe hello_upx_dumped.exe
+## System32 (recursive)
+files scanned: 18838
+matches: 0

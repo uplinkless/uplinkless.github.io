@@ -1,0 +1,32 @@
+{
+  "checks": [
+    {
+      "name": "oep",
+      "passed": true,
+      "detail": "found 0x1540, original 0x1540"
+    },
+    {
+      "name": "behaviour",
+      "passed": true,
+      "detail": "132 bytes of output; packed equal=True, dumped equal=True"
+    },
+    {
+      "name": "imports",
+      "passed": true,
+      "detail": "79 original, 79 dumped; missing=[], extra=[]"
+    },
+    {
+      "name": "code",
+      "passed": true,
+      "detail": ".text 0x148a0 bytes at 0x1000, 0 relocation sites, 0 differing bytes"
+    }
+  ],
+  "sha256": {
+    "hello_upx.exe": "5bf252c8ba34ea4e7df264c4411c31cd601b9dcba2d8544a0e199c52b4554f5d",
+    "hello_upx_packed.exe": "d926714f0ead8873b0b1f0bda72cc83c13885a72cca313bdeb2ead919bdd0685",
+    "hello_upx_dumped.exe": "b840a644a6c4b0b47f76f97c7768fd8a38e341b901990a1cf4c8338baec0182c",
+    "hello_upx_upxd.exe": "736ba32145d985daa2edfba51436c1e4fb5f459aae4e0316b3219b969cddeb98"
+  },
+  "upx_d_sections_equal": false,
+  "all_passed": true
+}
